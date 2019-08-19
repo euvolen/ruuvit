@@ -1,0 +1,31 @@
+{
+  "name": "ruuvit",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest",
+    "start": "nodemon -r esm",
+    "client": "npm start --prefix client",
+    "app": "concurrently \"npm run start\" \"npm run client\"",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
+  },
+  "author": "Eugene Volen",
+  "license": "ISC",
+  "dependencies": {
+    "apollo-server-express": "^2.5.0",
+    "bcryptjs": "^2.4.3",
+    "connect-mongo": "^2.0.3",
+    "cors": "^2.8.5",
+    "esm": "^3.2.25",
+    "express": "^4.17.0",
+    "express-session": "^1.16.1",
+    "graphql": "^14.3.0",
+    "joi": "^14.3.1",
+    "mongoose": "^5.5.10"
+  },
+  "devDependencies": {
+    "concurrently": "^4.1.2",
+    "nodemon": "^1.19.0"
+  }
+}

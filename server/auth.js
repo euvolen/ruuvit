@@ -16,8 +16,8 @@ export const isAdmin = (req)=>{
      throw new ForbiddenError('Forbidden.')
    
 }
-export const isReviewer = (req)=>{
-        if(!reviewer(req)||!admin(req))
+export const isDoctor = (req)=>{
+        if(!doctor(req)||!admin(req))
          throw new ForbiddenError('Forbidden.')      
     }
 
@@ -52,4 +52,4 @@ export const signOut = (req, res)=> new Promise((resolve, reject)=>{
 //util methods
 const signedin = req => req.session.userId
 const admin = req => req.session.role === 'admin'
-const reviewer = req => req.session.role === 'reviewer'
+const doctor = req => req.session.role === 'doctor'

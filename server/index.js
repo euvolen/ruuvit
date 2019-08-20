@@ -1,9 +1,9 @@
 import { ApolloServer } from 'apollo-server-express'
 import express from 'express'
-import typeDefs from './apollo/typeDefs'
+import typeDefs from './apollo/typedefs'
 import resolvers from './apollo/resolvers'
 import schemaDirectives from './apollo/directives'
-
+import {startProcess} from './deamons/rb-deamon'
 const IN_PROD = process.env.IN_PROD || false  
 const APP_PORT = process.env.APP_PORT || 5000      
   
@@ -41,7 +41,8 @@ if(process.env.NODE_ENV === 'production'){
     })
 }
 
-app.listen({ port: APP_PORT }, () => {
+app.listen({ port: APP_PORT }, async() => {
+    await startProcess()
     console.log(`Server ready at http://localhost:${APP_PORT}${server.graphqlPath}`)
 })
 

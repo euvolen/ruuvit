@@ -3,6 +3,8 @@ import {gql} from 'apollo-server-express'
 const root = gql`
     directive @public on FIELD_DEFINITION
     directive @private on FIELD_DEFINITION
+    directive @doctor on FIELD_DEFINITION
+    directive @admin on FIELD_DEFINITION
     type Query{
         _:String
     }

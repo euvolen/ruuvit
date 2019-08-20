@@ -18,8 +18,8 @@ export default {
         current: (root, args, {req}, info)=>{
             return User.findById(req.session.userId)
         },
-        users:(root, args, context, info)=>{
-             return User.find()
+        users:(root, args, {req}, info)=>{
+             return User.find({doctor:req.session.userId })
         },
         user:(root, args, context, info)=>{
 

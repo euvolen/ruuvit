@@ -10,23 +10,25 @@ const userSchema = new Schema({
         }
 
     },
-    name: String,
+    firstname: String,
+    lastname: String,
     status: String,
-    affilation:String,
+    company:String,
     password: String,
-    abstracts: [
+    rp_address: String,
+    doctor: 
         {
             type: Schema.Types.ObjectId,
-            ref: 'abstracts'
-        }],
-    abstract: 
+            ref: 'users'
+        },
+    userdata: 
         {
             type: Schema.Types.ObjectId,
-            ref: 'abstracts'
+            ref: 'userdata'
         },
     role: {
         type: String,
-        default: 'participant'
+        default: 'user'
     },
     isVerified: {
         type: Boolean,

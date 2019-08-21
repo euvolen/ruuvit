@@ -4,6 +4,7 @@ import {  signUp } from "../../validations"
 import { User } from "../../models"
 import { UserInputError } from "apollo-server-express";
 import {signOut, attemtSignIn} from '../../auth'
+import jwt from 'jsonwebtoken'
 
 /* 
  * Queries:
@@ -31,27 +32,34 @@ export default {
     },
     Mutation:{
         signUp: async(root, args, {req}, info)=>{
-            //TODO jwtoken based auth
-            //TODO SESSIONS
+               console.debug(args) 
              await Joi.validate(args, signUp, {abortEarly:false})
              const user =  await User.create(args)
              req.session.userId = user.id
              req.session.role = user.role
-             return user
+             const payload = {id: user.id, role:user.role}
+             const token = await jwt.sign(
+                payload, 
+                "This string is need to be transfered into separate setting file", 
+                { expiresIn: '3d'} );
+             return {token:token}
             
         },
         signIn: async (root, {email, password}, {req}, info)=>{
-            //TODO jwtoken based auth
-            //TODO SESSIONS
+            console.debug(email, password) 
             const user = await attemtSignIn(email,password)
             req.session.userId= user.id
             req.session.role = user.role
-            return user    
+            const payload = {id: user.id, role:user.role}
+            const token = await jwt.sign(
+               payload, 
+               "This string is need to be transfered into separate setting file", 
+               { expiresIn: '3d'} );
+            return {token:token}  
 
         },
         signOut: (root, args, {req, res}, info)=>{
-            //TODO jwtoken based auth
-            //TODO SESSIONS
+         
               return signOut(req,res)
         }
     }

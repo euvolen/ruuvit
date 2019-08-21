@@ -1,3 +1,4 @@
 /client/node_modules
 /client/design
 /node_modules
+/server/connect/credentials.js

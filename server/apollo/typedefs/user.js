@@ -8,8 +8,8 @@ export default gql`
 
     }
     extend type Mutation{
-        signUp(email:String!, firstname:String!,lastname:String!, password:String!, status:String, company:String):User @public
-        signIn (email:String!, password:String!): User @public
+        signUp(email:String!, firstname:String!,lastname:String!, password:String!, status:String, company:String):Auth @public
+        signIn (email:String!, password:String!): Auth @public
         signOut: Boolean @private
     }
     type User {
@@ -18,9 +18,12 @@ export default gql`
         role:String!
         firstname:String!
         lastname:String!
-        createdAt: String!
-        updatedAt:String!
+        status:String
     }
+    type Auth {
+        token:String!
+    }
+
    
   
 `

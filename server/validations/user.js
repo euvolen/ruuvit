@@ -1,7 +1,8 @@
 import Joi from 'joi'
 
 const email = Joi.string().email().required().label('Email')
-const name = Joi.string().max(256).required().label('Name')
+const firstname = Joi.string().max(256).required().label('Name')
+const lastname = Joi.string().max(256).required().label('Name')
 const affilation = Joi.string().max(256).required().label('Affilation')
 const status = Joi.string().max(256).required().label('Status')
 
@@ -16,7 +17,7 @@ language:{
 }
 })
 export const signUp = Joi.object().keys({
-    email, name, password, affilation, status
+    email, firstname, lastname, password, 
 })
 export const signIn = Joi.object().keys({
     email, password

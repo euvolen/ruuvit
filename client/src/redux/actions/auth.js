@@ -4,12 +4,13 @@ import jwt_decode from "jwt-decode";
 import { SET_CURRENT_USER, CLEAR_ERRORS } from "../types";
 
 // LOGIN
-export const authenticate = res => dispatch => {
+export const authenticate = (res,history) => dispatch => {
       dispatch({type:CLEAR_ERRORS})
-      const { token } = res.data;
+      const { token } = res;
       localStorage.setItem("jwtToken", token);
       const decoded = jwt_decode(token);
-      setCurrentUser(decoded);
+      dispatch(setCurrentUser(decoded));
+      history.push('/dashboard')
 
 };
 
@@ -24,7 +25,7 @@ export const setCurrentUser = decoded => {
 export const logout = ()=>dispatch => {
   dispatch({type:CLEAR_ERRORS})
   localStorage.removeItem("jwtToken");
-  setCurrentUser({});
+  dispatch(setCurrentUser({}))
 };
 
 

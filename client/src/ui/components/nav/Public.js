@@ -10,7 +10,7 @@ const Public = ({ component: Component, auth, ...rest }) => (
       auth.isAuthenticated === false ? (
         <Component {...props} />
       ) : (
-        <Redirect to="/home" />
+        <Redirect to="/dashboard" />
       )
     }
   />

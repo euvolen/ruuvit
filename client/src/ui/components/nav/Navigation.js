@@ -2,7 +2,9 @@ import React, { Component } from "react";
 import {Link} from 'react-router-dom'
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-
+import { Mutation } from 'react-apollo'
+import { SIGN_OUT } from '../../../apollo/Mutations'
+import { logout } from '../../../redux/actions';
 
 class Navigation extends Component {
 
@@ -13,7 +15,14 @@ class Navigation extends Component {
     const private_nav = (<>
         <li className="nav-item" role="presentation"><Link className="nav-link" to="/dashboard">Dashboard</Link></li>
         <li className="nav-item" role="presentation"><Link className="nav-link" to="/settings">Settings</Link></li>
-        <li className="nav-item" role="presentation"><Link className="nav-link" to="/logout">Logout</Link></li>
+        <li className="nav-item" role="presentation">    <Mutation mutation={SIGN_OUT}>
+                {(signOut, { data }) => (
+                  <a className="nav-link" href="/" onClick={(e)=>{
+                    e.preventDefault()
+                    signOut()
+                    .then(res=>{this.props.logout()})
+                    }}>Log out</a>)}
+              </Mutation> </li>
         </>
     )
     const public_nav = (<>
@@ -47,4 +56,4 @@ const mapStateToProps = state => ({
   auth: state.auth
 });
 
-export default connect(mapStateToProps)(Navigation);
+export default connect(mapStateToProps,{logout})(Navigation);

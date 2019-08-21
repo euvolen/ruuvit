@@ -1,4 +1,5 @@
 /client/node_modules
 /client/design
+/client/dashboard-design
 /node_modules
 /server/connect/credentials.js

@@ -5,12 +5,15 @@ import { connect } from "react-redux";
 import { Mutation } from 'react-apollo'
 import { SIGN_OUT } from '../../../apollo/Mutations'
 import { logout } from '../../../redux/actions';
+import PrivateNavigation from "./PrivateNavigation";
 
 class Navigation extends Component {
 
 
 
   render() {
+
+
     const { isAuthenticated, user } = this.props.auth;
     const private_nav = (<>
         <li className="nav-item" role="presentation"><Link className="nav-link" to="/dashboard">Dashboard</Link></li>
@@ -33,18 +36,19 @@ class Navigation extends Component {
         <li className="nav-item" role="presentation"><Link className="nav-link" to="/register">Register</Link></li>
         </>
     )
-    return (
-        <nav className="navbar navbar-light navbar-expand-lg fixed-top bg-white clean-navbar">
-        <div className="container"><a className="navbar-brand logo" href="#">Ruuvit</a><button data-toggle="collapse" className="navbar-toggler" data-target="#navcol-1"><span className="sr-only">Toggle navigation</span><span className="navbar-toggler-icon"></span></button>
-            <div className="collapse navbar-collapse"
-                id="navcol-1">
-                <ul className="nav navbar-nav ml-auto">
-                {isAuthenticated ? private_nav : public_nav}
-                </ul>
-            </div>
+
+    const public_navigation = (   <nav className="navbar navbar-light navbar-expand-lg fixed-top bg-white clean-navbar">
+    <div className="container"><a className="navbar-brand logo" href="#">Ruuvit</a><button data-toggle="collapse" className="navbar-toggler" data-target="#navcol-1"><span className="sr-only">Toggle navigation</span><span className="navbar-toggler-icon"></span></button>
+        <div className="collapse navbar-collapse"
+            id="navcol-1">
+            <ul className="nav navbar-nav ml-auto">
+            {isAuthenticated ? private_nav : public_nav}
+            </ul>
         </div>
-    </nav>
-    );
+    </div>
+</nav>)
+ 
+    return isAuthenticated ? <PrivateNavigation/> : public_navigation;
   }
 }
 

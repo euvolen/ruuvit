@@ -54,7 +54,7 @@ connect().then(()=>{
     }
     
     app.listen({ port: APP_PORT }, async() => {
-        await startProcess()
+        //await startProcess()
         console.log(`Server ready at http://localhost:${APP_PORT}${server.graphqlPath}`)
     })
     

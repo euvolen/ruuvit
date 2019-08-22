@@ -38,7 +38,7 @@ const App = () => {
         <Router>
           <Navigation/>
        <Switch>
-          <main className="page landing-page">
+          <div className="page landing-page">
           <Public exact path="/" component={Landing}/>
           <Public exact path="/about" component={AboutUs}/>
           <Public exact path="/contact-us" component={Contacts}/>
@@ -46,8 +46,9 @@ const App = () => {
           <Public exact path="/register" component={Register}/>
           <Private exact path="/dashboard" component={Dashboard}/>
           <Private exact path="/settings" component={AccountPage}/>
+          <Private exact path="/patient/:id" component={AccountPage}/>
           <Private exact path="/patients" component={PatientList}/>
-          </main>
+          </div>
        </Switch>
        <Footer/>
         </Router>

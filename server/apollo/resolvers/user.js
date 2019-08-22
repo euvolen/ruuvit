@@ -37,7 +37,8 @@ export default {
              const user =  await User.create(args)
              req.session.userId = user.id
              req.session.role = user.role
-             const payload = {id: user.id, role:user.role}
+             const payload = {id: user.id, role:user.role, name: `${user.firstname} ${user.lastname}`}
+             console.log(payload)
              const token = await jwt.sign(
                 payload, 
                 "This string is need to be transfered into separate setting file", 
@@ -50,7 +51,7 @@ export default {
             const user = await attemtSignIn(email,password)
             req.session.userId= user.id
             req.session.role = user.role
-            const payload = {id: user.id, role:user.role}
+            const payload = {id: user.id, role:user.role,name: `${user.firstname} ${user.lastname}`}
             const token = await jwt.sign(
                payload, 
                "This string is need to be transfered into separate setting file", 

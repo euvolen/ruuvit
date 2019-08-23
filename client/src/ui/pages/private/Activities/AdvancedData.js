@@ -4,12 +4,42 @@ export default class AdvancedData extends Component {
     render() {
         return (
             <div className="row">
-            <div className="col-lg-6 mb-4">
+            <div className="col-lg-12 mb-4">
                 <div className="card shadow mb-4">
                     <div className="card-header py-3">
                         <h6 className="text-primary font-weight-bold m-0">Projects</h6>
                     </div>
                     <div className="card-body">
+                    <div className="row mb-3 ">
+                <div className="col">
+                    <div className="card text-white bg-primary shadow">
+                        <div className="card-body">
+                            <div className="row mb-2">
+                                <div className="col">
+                                    <p className="m-0">Peformance</p>
+                                    <p className="m-0"><strong>65.2%</strong></p>
+                                </div>
+                                <div className="col-auto"><i className="fas fa-rocket fa-2x"></i></div>
+                            </div>
+                            <p className="text-white-50 small m-0"><i className="fas fa-arrow-up"></i>&nbsp;5% since last month</p>
+                        </div>
+                    </div>
+                </div>
+                <div className="col">
+                    <div className="card text-white bg-success shadow">
+                        <div className="card-body">
+                            <div className="row mb-2">
+                                <div className="col">
+                                    <p className="m-0">Peformance</p>
+                                    <p className="m-0"><strong>65.2%</strong></p>
+                                </div>
+                                <div className="col-auto"><i className="fas fa-rocket fa-2x"></i></div>
+                            </div>
+                            <p className="text-white-50 small m-0"><i className="fas fa-arrow-up"></i>&nbsp;5% since last month</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
                         <h4 className="small font-weight-bold">Server migration<span className="float-right">20%</span></h4>
                         <div className="progress mb-4">
                             <div className="progress-bar bg-danger" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style={{width: '20%'}}><span className="sr-only">20%</span></div>
@@ -67,6 +97,7 @@ export default class AdvancedData extends Component {
                     </ul>
                 </div>
             </div>
+            
             <div className="col">
                 <div className="row">
                     <div className="col-lg-6 mb-4">
@@ -119,6 +150,7 @@ export default class AdvancedData extends Component {
                     </div>
                 </div>
             </div>
+
         </div>
         )
     }

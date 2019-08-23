@@ -13,7 +13,7 @@ class Message extends Component {
             </div>
             <div className="card-body">
                 <div className="row">
-                    <div className="col-md-6">
+                    <div className="col-md-12">
                         <form>
                             <div className="form-group"><label htmlFor="signature"><strong>Message</strong><br/></label><textarea className="form-control" rows="4" name="signature"></textarea></div>
                          

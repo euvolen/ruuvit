@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import PatientListItem from './Patients/PatientListItem';
+import Search from '../../components/nav/Search';
 
 
 const patiens =[
@@ -74,10 +75,8 @@ const patiens =[
                         </div>
                         <div className="card-body">
                             <div className="row">
-                                <div className="col-md-6 text-nowrap">
-                                    <div id="dataTable_length" className="dataTables_length" aria-controls="dataTable"><label>Show&nbsp;<select className="form-control form-control-sm custom-select custom-select-sm"><option value="10" selected="">10</option><option value="25">25</option><option value="50">50</option><option value="100">100</option></select>&nbsp;</label></div>
-                                </div>
-                                <div className="col-md-6">
+                            
+                                <div className="col-md-12">
                                     <div className="text-md-right dataTables_filter" id="dataTable_filter"><label><input type="search" className="form-control form-control-sm" aria-controls="dataTable" placeholder="Search"/></label></div>
                                 </div>
                             </div>

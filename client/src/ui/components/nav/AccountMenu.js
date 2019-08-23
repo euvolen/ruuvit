@@ -14,7 +14,7 @@ import { logout } from '../../../redux/actions';
         const {  user } = this.props;
         return (
             <li className="nav-item dropdown no-arrow" role="presentation">
-            <div className="nav-item dropdown no-arrow"><a className="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="#"><span className="d-none d-lg-inline mr-2 text-gray-600 small">{user ? user.name : 'Valerie Luna'}</span><img className="border rounded-circle img-profile" src="/assets/img/avatars/avatar1.jpeg"/></a>
+            <div className="nav-item dropdown no-arrow"><a className="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="#"><span className="d-none d-lg-inline mr-2 text-gray-600 small">{user ? user.name : 'Valerie Luna'}</span><img className="border rounded-circle img-profile" style={{width:'35px'}} src={user.avatar? user.avatar : "/assets/img/dogs/image2.jpeg"}/></a>
                 <div
                     className="dropdown-menu shadow dropdown-menu-right animated--grow-in" role="menu">
                         <Link className="dropdown-item" role="presentation" to="/settings"><i className="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;Profile</Link>

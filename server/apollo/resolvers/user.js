@@ -32,13 +32,13 @@ export default {
     },
     Mutation:{
         signUp: async(root, args, {req}, info)=>{
-               console.debug(args) 
+
              await Joi.validate(args, signUp, {abortEarly:false})
              const user =  await User.create(args)
              req.session.userId = user.id
              req.session.role = user.role
-             const payload = {id: user.id, role:user.role, name: `${user.firstname} ${user.lastname}`}
-             console.log(payload)
+             const payload = {id: user.id, role:user.role, name: `${user.firstname} ${user.lastname}`,avatar:user.avatar}
+
              const token = await jwt.sign(
                 payload, 
                 "This string is need to be transfered into separate setting file", 
@@ -47,11 +47,11 @@ export default {
             
         },
         signIn: async (root, {email, password}, {req}, info)=>{
-            console.debug(email, password) 
+  
             const user = await attemtSignIn(email,password)
             req.session.userId= user.id
             req.session.role = user.role
-            const payload = {id: user.id, role:user.role,name: `${user.firstname} ${user.lastname}`}
+            const payload = {id: user.id, role:user.role,name: `${user.firstname} ${user.lastname}`, avatar:user.avatar}
             const token = await jwt.sign(
                payload, 
                "This string is need to be transfered into separate setting file", 

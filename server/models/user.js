@@ -1,6 +1,6 @@
 import mongoose, { Schema } from 'mongoose'
 import bcrypt from 'bcryptjs'
-
+import gravatar from 'gravatar'
 const userSchema = new Schema({
     email: {
         type: String,
@@ -13,6 +13,8 @@ const userSchema = new Schema({
     firstname: String,
     lastname: String,
     status: String,
+    phone:String,
+    address:String,
     company:String,
     password: String,
     rp_address: String,
@@ -21,6 +23,7 @@ const userSchema = new Schema({
             type: Schema.Types.ObjectId,
             ref: 'users'
         },
+    avatar:String,
     userdata: 
         {
             type: Schema.Types.ObjectId,
@@ -54,6 +57,7 @@ userSchema.pre('save', async function () {
     if (this.isModified('password')) {
         this.password = await bcrypt.hash(this.password, 10)
     }
+    this.avatar = gravatar.url(this.email, {s:'35',r:'pg' })
 })
 
 const User = mongoose.model('users', userSchema)

@@ -34,9 +34,11 @@ export default {
         signUp: async(root, args, {req}, info)=>{
 
              await Joi.validate(args, signUp, {abortEarly:false})
+             
              const user =  await User.create(args)
              req.session.userId = user.id
              req.session.role = user.role
+  
              const payload = {id: user.id, role:user.role, name: `${user.firstname} ${user.lastname}`,avatar:user.avatar}
 
              const token = await jwt.sign(
@@ -51,6 +53,8 @@ export default {
             const user = await attemtSignIn(email,password)
             req.session.userId= user.id
             req.session.role = user.role
+            console.log(req.session.userId)
+            console.log(req.session)
             const payload = {id: user.id, role:user.role,name: `${user.firstname} ${user.lastname}`, avatar:user.avatar}
             const token = await jwt.sign(
                payload, 

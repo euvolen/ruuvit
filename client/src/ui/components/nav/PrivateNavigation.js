@@ -6,6 +6,7 @@ import Search from './Search';
 import Notifications from './Notifications';
 import Messages from './Messages';
 import AccountMenu from './AccountMenu';
+import AdminNavigation from './AdminNavigation';
 
  class PrivateNavigation extends Component {
  
@@ -20,6 +21,7 @@ import AccountMenu from './AccountMenu';
     
               <Notifications/>
              {user.role == 'user' ? <Messages/> : undefined}
+             {user.role == 'user' ? <AdminNavigation/> : undefined}
                     <div className="d-none d-sm-block topbar-divider"></div>
                 <AccountMenu/>
                   </ul>

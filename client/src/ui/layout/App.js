@@ -19,6 +19,7 @@ import Register from '../pages/public/Register';
 import Dashboard from '../pages/private/Dashboard';
 import AccountPage from '../pages/private/AccountPage';
 import PatientList from '../pages/private/PatientList';
+import AdminDashboard from '../pages/admin/AdminDashboard';
 
 if (localStorage.jwtToken) {
   const decoded = jwt_decode(localStorage.jwtToken);
@@ -48,6 +49,7 @@ const App = () => {
           <Private exact path="/settings" component={AccountPage}/>
           <Private exact path="/patient/:id" component={AccountPage}/>
           <Private exact path="/patients" component={PatientList}/>
+          <Private exact path="/admin" component={AdminDashboard}/>
           </div>
        </Switch>
        <Footer/>

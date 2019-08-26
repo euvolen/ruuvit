@@ -1,6 +1,7 @@
 import React from 'react'
 
 function Footer() {
+    //TODO  public  and private footer
     return (
         <footer className="page-footer dark">
         <div className="container">
@@ -40,7 +41,7 @@ function Footer() {
             </div>
         </div>
         <div className="footer-copyright">
-            <p>© 2018 Copyright Text</p>
+            <p>© 2019 Ruuvit-project</p>
         </div>
     </footer>
     )

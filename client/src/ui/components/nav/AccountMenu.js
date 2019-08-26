@@ -8,7 +8,7 @@ import { logout } from '../../../redux/actions';
 
 
  class AccountMenu extends Component {
-    //TODO classnames - state, fetching AccountMenu
+    //TODO classnames - state, fetching AccountMenu, 
 
     render() {
         const {  user } = this.props;
@@ -22,17 +22,16 @@ import { logout } from '../../../redux/actions';
                     <Link className="dropdown-item" role="presentation" to="/patients"><i className="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;Pantients</Link>
                         <div className="dropdown-divider"></div>
                         <Mutation mutation={SIGN_OUT}>
-    {(signOut, { data }) => (
-      <a className="dropdown-item" role="presentation" href="#" onClick={(e)=>{
-        e.preventDefault()
-        signOut()
-        .then(res=>{this.props.logout()})
-        }}><i className="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;Logout</a>)}
-  </Mutation>
-                       
-                        </div>
-      </div>
-      </li>
+                              {(signOut, { data }) => (
+                                <a className="dropdown-item" role="presentation" href="#" onClick={(e)=>{
+                                  e.preventDefault()
+                                  signOut()
+                                  .then(res=>{this.props.logout()})
+                                  }}><i className="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;Logout</a>)}
+                            </Mutation>
+                </div>
+          </div>
+          </li>
         )
     }
 }

@@ -12,7 +12,7 @@ connect().then(()=>{
     const IN_PROD = process.env.IN_PROD || false  
 
 
-    const APP_PORT = process.env.APP_PORT || 5000      
+    const APP_PORT = process.env.APP_PORT || 4000      
       
       
     const app = express()

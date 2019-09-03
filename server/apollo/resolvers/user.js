@@ -5,6 +5,7 @@ import { User } from "../../models"
 import { UserInputError } from "apollo-server-express";
 import {signOut, attemtSignIn} from '../../auth'
 import jwt from 'jsonwebtoken'
+import {jwt_key} from './../../connect/credentials'
 
 /* 
  * Queries:
@@ -43,7 +44,7 @@ export default {
 
              const token = await jwt.sign(
                 payload, 
-                "This string is need to be transfered into separate setting file", 
+                jwt_key, 
                 { expiresIn: '3d'} );
              return {token:token}
             
@@ -53,12 +54,10 @@ export default {
             const user = await attemtSignIn(email,password)
             req.session.userId= user.id
             req.session.role = user.role
-            console.log(req.session.userId)
-            console.log(req.session)
             const payload = {id: user.id, role:user.role,name: `${user.firstname} ${user.lastname}`, avatar:user.avatar}
             const token = await jwt.sign(
                payload, 
-               "This string is need to be transfered into separate setting file", 
+               jwt_key, 
                { expiresIn: '3d'} );
             return {token:token}  
 

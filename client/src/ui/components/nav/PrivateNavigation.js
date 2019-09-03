@@ -21,7 +21,7 @@ import AdminNavigation from './AdminNavigation';
     
               <Notifications/>
              {user.role == 'user' ? <Messages/> : undefined}
-             {user.role == 'user' ? <AdminNavigation/> : undefined}
+             {user.role == 'admin' ? <AdminNavigation/> : undefined}
                     <div className="d-none d-sm-block topbar-divider"></div>
                 <AccountMenu/>
                   </ul>

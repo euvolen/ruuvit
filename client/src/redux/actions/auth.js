@@ -2,6 +2,7 @@ import axios from "axios";
 import jwt_decode from "jwt-decode";
 
 import { SET_CURRENT_USER, CLEAR_ERRORS } from "../types";
+import setToken from "../../utils/setToken";
 
 // LOGIN
 export const authenticate = (res,history) => dispatch => {

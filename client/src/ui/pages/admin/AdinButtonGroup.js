@@ -10,17 +10,17 @@ class AdminButtonGroup extends Component {
     }
 
     start(){
-        axious.post('http://localhost:5000/start').then(res=>{
+        axious.post('http://localhost:5000/ml/start').then(res=>{
             this.setState({started:res.data.status, msg:res.data.msg})
         })
     }
     stop(){
-        axious.post('http://localhost:5000/stop').then(res=>{
+        axious.post('http://localhost:5000/ml/stop').then(res=>{
             this.setState({started:res.data.status, msg:res.data.msg})
         })
     }
     test(){
-        axious.post('http://localhost:5000/test').then(res=>{
+        axious.post('http://localhost:5000/ml/test').then(res=>{
             this.setState({msg:res.data.msg, test:res.data.test})
         })
     }

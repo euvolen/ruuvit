@@ -20,11 +20,12 @@ import Dashboard from '../pages/private/Dashboard';
 import AccountPage from '../pages/private/AccountPage';
 import PatientList from '../pages/private/PatientList';
 import AdminDashboard from '../pages/admin/AdminDashboard';
+import AdminLogin from '../pages/admin/AdminLogin';
+import Authorized from '../components/nav/Authorized';
 
 if (localStorage.jwtToken) {
   const decoded = jwt_decode(localStorage.jwtToken);
   store.dispatch(setCurrentUser(decoded));
-
   const currentTime = Date.now() / 1000;
 
   if (decoded.exp < currentTime) {
@@ -49,7 +50,8 @@ const App = () => {
           <Private exact path="/settings" component={AccountPage}/>
           <Private exact path="/patient/:id" component={AccountPage}/>
           <Private exact path="/patients" component={PatientList}/>
-          <Private exact path="/admin" component={AdminDashboard}/>
+          <Authorized exact path="/admin-dashboard" component={AdminDashboard}/>
+          <Authorized exact path="/admin" component={AdminLogin}/>
           </div>
        </Switch>
        <Footer/>
